@@ -37,10 +37,22 @@ export function Contact() {
     if (!formRef.current) return
     setStatus('sending')
     try {
-      await emailjs.sendForm(
+      const formData = new FormData(formRef.current)
+      const fromName = String(formData.get('from_name') ?? '')
+      const fromEmail = String(formData.get('reply_to') ?? '')
+      const subject = String(formData.get('subject') ?? '')
+      const message = String(formData.get('message') ?? '')
+
+      await emailjs.send(
         EMAILJS.serviceId,
         EMAILJS.templateId,
-        formRef.current,
+        {
+          from_name: fromName,
+          from_email: fromEmail,
+          reply_to: fromEmail,
+          subject,
+          message,
+        },
         { publicKey: EMAILJS.publicKey },
       )
       setStatus('success')
