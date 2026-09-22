@@ -40,7 +40,7 @@ export function Projects() {
           {projects.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.1}>
               <article className="group glass flex h-full flex-col rounded-2xl p-6 transition-all hover:-translate-y-2 hover:glow-border">
-                <div className="flex h-40 items-center justify-center rounded-xl bg-[linear-gradient(135deg,rgba(59,130,246,0.15),rgba(124,58,237,0.15))]">
+                <div className="flex h-40 items-center justify-center rounded-xl bg-[linear-gradient(135deg,rgba(23,133,130,0.15),rgba(191,161,129,0.15))]">
                   <p.icon className="h-14 w-14 text-primary transition-transform duration-500 group-hover:scale-110" />
                 </div>
 

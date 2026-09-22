@@ -31,19 +31,27 @@ function useTyping(words: string[]) {
 
   useEffect(() => {
     const current = words[index % words.length]
-    const speed = deleting ? 45 : 90
-    const timeout = setTimeout(() => {
-      setText((prev) =>
-        deleting ? current.slice(0, prev.length - 1) : current.slice(0, prev.length + 1),
-      )
-      if (!deleting && text === current) {
-        setTimeout(() => setDeleting(true), 1400)
-      } else if (deleting && text === '') {
+
+    if (!deleting && text === current) {
+      const id = setTimeout(() => setDeleting(true), 1500)
+      return () => clearTimeout(id)
+    }
+
+    if (deleting && text === '') {
+      const id = setTimeout(() => {
         setDeleting(false)
         setIndex((i) => i + 1)
-      }
-    }, speed)
-    return () => clearTimeout(timeout)
+      }, 350)
+      return () => clearTimeout(id)
+    }
+
+    const id = setTimeout(
+      () => {
+        setText(deleting ? current.slice(0, text.length - 1) : current.slice(0, text.length + 1))
+      },
+      deleting ? 45 : 90,
+    )
+    return () => clearTimeout(id)
   }, [text, deleting, index, words])
 
   return text
@@ -74,7 +82,7 @@ export function Hero() {
             <span className="text-gradient">Sakthi Madasamy</span>
           </h1>
 
-          <p className="mt-4 h-8 font-heading text-lg font-medium text-primary sm:text-xl">
+          <p className="mt-4 min-h-8 font-heading text-lg font-medium text-primary sm:text-xl">
             {typed}
             <span className="ml-0.5 inline-block h-6 w-0.5 animate-pulse bg-primary align-middle" />
           </p>

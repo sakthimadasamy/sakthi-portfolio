@@ -28,14 +28,20 @@ const details = [
 
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
+function subjectForMailto(reason: string | null) {
+  return reason ? `Contact form failed: ${reason}` : 'Contact form failed'
+}
+
 export function Contact() {
   const formRef = useRef<HTMLFormElement>(null)
   const [status, setStatus] = useState<Status>('idle')
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!formRef.current) return
     setStatus('sending')
+    setErrorMessage(null)
     try {
       const formData = new FormData(formRef.current)
       const fromName = String(formData.get('from_name') ?? '')
@@ -58,7 +64,14 @@ export function Contact() {
       setStatus('success')
       formRef.current.reset()
     } catch (err) {
-      console.log('[v0] EmailJS error:', err)
+      console.error('[contact] EmailJS send failed:', err)
+      const text =
+        err && typeof err === 'object' && 'text' in err && typeof err.text === 'string'
+          ? err.text
+          : err instanceof Error
+            ? err.message
+            : null
+      setErrorMessage(text)
       setStatus('error')
     }
   }
@@ -215,9 +228,26 @@ export function Contact() {
                 </p>
               )}
               {status === 'error' && (
-                <p className="flex items-center gap-2 text-sm text-destructive">
-                  <AlertCircle className="h-4 w-4" /> Something went wrong. Please email me directly.
-                </p>
+                <div className="text-sm text-destructive">
+                  <p className="flex items-center gap-2">
+                    <AlertCircle className="h-4 w-4 shrink-0" /> Something went wrong.{' '}
+                    {errorMessage ? (
+                      <span className="text-destructive/80">({errorMessage})</span>
+                    ) : null}
+                  </p>
+                  <p className="mt-1 pl-6">
+                    Please email me directly at{' '}
+                    <a
+                      href={`mailto:${CONTACT.email}?subject=${encodeURIComponent(
+                        subjectForMailto(errorMessage),
+                      )}`}
+                      className="font-medium underline underline-offset-2 hover:text-primary"
+                    >
+                      {CONTACT.email}
+                    </a>
+                    .
+                  </p>
+                </div>
               )}
             </form>
           </Reveal>

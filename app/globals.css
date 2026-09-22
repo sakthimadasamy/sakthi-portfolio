@@ -39,26 +39,26 @@
 
 :root {
   color-scheme: dark;
-  --background: #09090b;
+  --background: #0a1828;
   --foreground: #f4f4f5;
-  --card: #111827;
+  --card: #0e2136;
   --card-foreground: #f4f4f5;
-  --popover: #111827;
+  --popover: #0e2136;
   --popover-foreground: #f4f4f5;
-  --primary: #3b82f6;
+  --primary: #178582;
   --primary-foreground: #ffffff;
-  --secondary: #1e293b;
+  --secondary: #12283c;
   --secondary-foreground: #e2e8f0;
-  --muted: #18181b;
+  --muted: #0d1f33;
   --muted-foreground: #a1a1aa;
-  --accent: #7c3aed;
-  --accent-foreground: #ffffff;
-  --cyan: #06b6d4;
-  --purple: #7c3aed;
+  --accent: #bfa181;
+  --accent-foreground: #0a1828;
+  --cyan: #bfa181;
+  --purple: #bfa181;
   --destructive: #ef4444;
   --border: rgba(255, 255, 255, 0.08);
   --input: rgba(255, 255, 255, 0.1);
-  --ring: #3b82f6;
+  --ring: #178582;
   --radius: 0.75rem;
 }
 
@@ -68,6 +68,9 @@
   }
   html {
     scroll-behavior: smooth;
+  }
+  section[id] {
+    scroll-margin-top: 5rem;
   }
   body {
     @apply bg-background text-foreground;
@@ -83,13 +86,13 @@
     color: transparent;
   }
   .glass {
-    background: rgba(17, 24, 39, 0.55);
+    background: rgba(14, 33, 54, 0.55);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(255, 255, 255, 0.08);
   }
   .glow-border {
-    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.35), 0 0 24px -4px rgba(59, 130, 246, 0.45);
+    box-shadow: 0 0 0 1px rgba(23, 133, 130, 0.35), 0 0 24px -4px rgba(191, 161, 129, 0.45);
   }
 }
 

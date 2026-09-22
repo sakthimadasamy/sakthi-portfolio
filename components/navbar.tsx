@@ -17,7 +17,7 @@ const links = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const [active, setActive] = useState('about')
+  const [active, setActive] = useState('')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -27,16 +27,17 @@ export function Navbar() {
   }, [])
 
   useEffect(() => {
+    const ids = ['hero', ...links.map((l) => l.id)]
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        for (const entry of entries) {
           if (entry.isIntersecting) setActive(entry.target.id)
-        })
+        }
       },
       { rootMargin: '-45% 0px -50% 0px' },
     )
-    links.forEach((l) => {
-      const el = document.getElementById(l.id)
+    ids.forEach((id) => {
+      const el = document.getElementById(id)
       if (el) observer.observe(el)
     })
     return () => observer.disconnect()
