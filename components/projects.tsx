@@ -47,7 +47,7 @@ export function Projects() {
           {projects.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.1}>
               <article className="group glass flex h-full flex-col rounded-2xl p-6 transition-all hover:-translate-y-2 hover:glow-border">
-                <div className="flex h-40 items-center justify-center rounded-xl bg-[linear-gradient(135deg,rgba(23,133,130,0.15),rgba(191,161,129,0.15))]">
+                <div className="flex h-40 items-center justify-center rounded-xl bg-[linear-gradient(135deg,rgba(94,234,212,0.1),rgba(255,120,73,0.1))]">
                   <p.icon className="h-14 w-14 text-primary transition-transform duration-500 group-hover:scale-110" />
                 </div>
 
@@ -57,7 +57,7 @@ export function Projects() {
                   {p.tech.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary"
+                      className="rounded-full bg-[var(--cyan)]/10 px-2.5 py-1 font-mono text-xs font-medium text-[var(--cyan)]"
                     >
                       {t}
                     </span>
@@ -68,7 +68,7 @@ export function Projects() {
 
                 {p.future && (
                   <div className="mt-4 rounded-xl border border-border bg-secondary/40 p-3">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-[var(--cyan)]">
+                    <p className="font-mono text-xs font-medium uppercase tracking-wide text-[var(--cyan)]">
                       Future Improvements
                     </p>
                     <p className="mt-1 text-sm text-muted-foreground">{p.future}</p>

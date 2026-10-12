@@ -14,9 +14,9 @@ export function AnimatedBackground() {
     if (!canvas || !ctx) return
 
     const settings = {
-      background: '#0a1828',
-      textColor: '#178582',
-      accent: '#bfa181',
+      background: '#071C22',
+      textColor: '#A3B7BC',
+      accent: '#FF7849',
       fontSize: 12,
       size: 10,
       rain: 100,

@@ -27,7 +27,8 @@
   --color-ring: var(--ring);
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -39,26 +40,26 @@
 
 :root {
   color-scheme: dark;
-  --background: #0a1828;
-  --foreground: #f4f4f5;
-  --card: #0e2136;
-  --card-foreground: #f4f4f5;
-  --popover: #0e2136;
-  --popover-foreground: #f4f4f5;
-  --primary: #178582;
-  --primary-foreground: #ffffff;
-  --secondary: #12283c;
-  --secondary-foreground: #e2e8f0;
-  --muted: #0d1f33;
-  --muted-foreground: #a1a1aa;
-  --accent: #bfa181;
-  --accent-foreground: #0a1828;
-  --cyan: #bfa181;
-  --purple: #bfa181;
+  --background: #071c22;
+  --foreground: #f8fafc;
+  --card: #12313a;
+  --card-foreground: #f8fafc;
+  --popover: #12313a;
+  --popover-foreground: #f8fafc;
+  --primary: #ff7849;
+  --primary-foreground: #071c22;
+  --secondary: #12313a;
+  --secondary-foreground: #f8fafc;
+  --muted: #12313a;
+  --muted-foreground: #a3b7bc;
+  --accent: #ff7849;
+  --accent-foreground: #071c22;
+  --cyan: #5eead4;
+  --purple: #ff7849;
   --destructive: #ef4444;
-  --border: rgba(255, 255, 255, 0.08);
-  --input: rgba(255, 255, 255, 0.1);
-  --ring: #178582;
+  --border: #24434b;
+  --input: #24434b;
+  --ring: #ff7849;
   --radius: 0.75rem;
 }
 
@@ -80,19 +81,19 @@
 
 @layer utilities {
   .text-gradient {
-    background-image: linear-gradient(120deg, var(--primary), var(--cyan), var(--purple));
+    background-image: linear-gradient(120deg, var(--primary), var(--cyan));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
   .glass {
-    background: rgba(14, 33, 54, 0.55);
+    background: rgba(18, 49, 58, 0.78);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border);
   }
   .glow-border {
-    box-shadow: 0 0 0 1px rgba(23, 133, 130, 0.35), 0 0 24px -4px rgba(191, 161, 129, 0.45);
+    box-shadow: 0 0 0 1px rgba(255, 120, 73, 0.28), 0 0 22px -8px rgba(255, 120, 73, 0.5);
   }
 }
 
