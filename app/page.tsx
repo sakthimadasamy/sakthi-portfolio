@@ -2,7 +2,6 @@ import { AnimatedBackground } from '@/components/animated-background'
 import { Navbar } from '@/components/navbar'
 import { Hero } from '@/components/hero'
 import { About } from '@/components/about'
-import { Skills } from '@/components/skills'
 import { Services } from '@/components/services'
 import { Experience } from '@/components/experience'
 import { Projects } from '@/components/projects'
@@ -15,19 +14,20 @@ export default function Page() {
   return (
     <>
       <AnimatedBackground />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Services />
-        <Experience />
-        <Projects />
-        <Certifications />
-        <Education />
-        <Contact />
-      </main>
-      <Footer />
+      <div className="relative z-10">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Services />
+          <Experience />
+          <Projects />
+          <Certifications />
+          <Education />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }

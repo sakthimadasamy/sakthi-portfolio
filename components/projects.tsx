@@ -1,6 +1,6 @@
 'use client'
 
-import { Recycle, Flame, Brain } from 'lucide-react'
+import { Recycle, Flame, Brain, Briefcase, ExternalLink } from 'lucide-react'
 import { Reveal, SectionHeading } from '@/components/reveal'
 
 const projects = [
@@ -24,6 +24,13 @@ const projects = [
     tech: ['Python', 'Deep Learning', 'Computer Vision', 'AI', 'Medical Imaging'],
     desc: 'Developed a deep learning model for early glioma detection from limited MRI slices. Integrated Grad-CAM overlays to provide explainable AI visualizations, improving clinical interpretability by highlighting affected regions.',
     future: 'Broader dataset training and 3D volumetric analysis.',
+  },
+  {
+    icon: Briefcase,
+    title: 'JobTrack: Job Application Tracker',
+    tech: ['React', 'Node.js', 'Express', 'REST API', 'Vercel', 'Render'],
+    desc: 'Built a full-stack application to manage job applications and offers in one place. Users can add or delete applications and update their status across Applied, Interview, Offer, and Rejected. The React frontend connects to Node.js and Express REST APIs, with the frontend deployed on Vercel and the backend on Render.',
+    link: 'https://joboffertrack.vercel.app',
   },
 ]
 
@@ -59,12 +66,25 @@ export function Projects() {
 
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
 
-                <div className="mt-4 rounded-xl border border-border bg-secondary/40 p-3">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-[var(--cyan)]">
-                    Future Improvements
-                  </p>
-                  <p className="mt-1 text-sm text-muted-foreground">{p.future}</p>
-                </div>
+                {p.future && (
+                  <div className="mt-4 rounded-xl border border-border bg-secondary/40 p-3">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-[var(--cyan)]">
+                      Future Improvements
+                    </p>
+                    <p className="mt-1 text-sm text-muted-foreground">{p.future}</p>
+                  </div>
+                )}
+                {p.link && (
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-4 inline-flex w-fit items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-[var(--cyan)]"
+                  >
+                    View Live Project
+                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                )}
               </article>
             </Reveal>
           ))}
